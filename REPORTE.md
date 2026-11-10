@@ -1,6 +1,8 @@
 # Reporte: aplicación síncrona vs. asíncrona con PyMongo y MongoDB Atlas
 
-**Equipo:** _(nombres de los integrantes)_
+**Equipo:** _(nombres de los integrantes)_  
+**Repositorio:** https://github.com/Anngel-o/pymongo_sample_mflix  
+**Guía del proyecto:** `Guia_del_Proyecto.docx` (en el repositorio)  
 **Materia / fecha:** _(completar)_
 
 ## 1. Objetivo
@@ -29,6 +31,7 @@ los datos. Las dos tienen exactamente las mismas opciones.
 | **Consultas** | 7, 8, 9, 10 | Cuatro consultas, cada una con una función distinta de MongoDB: películas de un año (filtro), cuántas hay de un género (conteo), las 5 mejor calificadas (ordenar y limitar) y géneros con más películas (agregación). |
 | **Consultas juntas** | 11 | Las 4 consultas a la vez (en la asíncrona) o una tras otra (en la síncrona). |
 | **Prueba de rendimiento** | 12 | Mide el tiempo de carga masiva, CRUD masivo y consultas (ver sección 5). |
+| **Limpiar** | 13 | Borra todo lo de `movies_test` y la deja vacía. |
 
 Las consultas se hacen sobre `movies` (la original, que solo se lee). La carga y el CRUD se hacen sobre
 `movies_test`.
@@ -70,9 +73,15 @@ Los números no tienen una razón matemática; son valores por defecto que se pu
 
 ## 5. Resultados
 
-Se ejecutó `python comparar.py`, que corre la opción 12 (prueba de rendimiento) de las dos apps con los
-mismos datos y parámetros (2,000 películas, lotes de 200, CRUD masivo de 50 películas, 20 consultas y
-concurrencia máxima 5). Pegar aquí la tabla de `resultados.md`:
+Para obtener estos números se ejecuta `python comparar.py`. Corre la opción 12 (prueba de rendimiento)
+de las dos apps con los mismos datos y parámetros (2,000 películas, lotes de 200, CRUD masivo de 50 películas,
+20 consultas y concurrencia máxima 5) e imprime una tabla con los tiempos.
+
+> **Sobre `resultados.md`:** `comparar.py` guarda esa misma tabla en un archivo llamado `resultados.md`,
+> pero **solo lo crea cuando se ejecuta**. Si la carpeta no lo tiene, es porque todavía no se ha corrido
+> `comparar.py`. Una vez generado, se copia aquí la tabla.
+
+Tabla de resultados (pegar aquí):
 
 | Operación | Síncrona (s) | Asíncrona (s) | Veces más rápida la asíncrona |
 |---|---|---|---|
@@ -115,4 +124,4 @@ simple y suficiente cuando se hacen pocas operaciones.
 
 ## 8. Cómo reproducirlo
 
-Ver `README.md`.
+Ver `README.md` (pasos resumidos) y `Guia_del_Proyecto.docx` (guía completa con capturas).
